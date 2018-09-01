@@ -1,6 +1,7 @@
 ﻿using Android.App;
 using Android.Widget;
 using Android.OS;
+using System.Linq;
 
 namespace AND110ListsAndAdapters
 {
@@ -21,6 +22,14 @@ namespace AND110ListsAndAdapters
             var button = FindViewById<Button>(Resource.Id.myButton);
 
             button.Click += delegate { button.Text = $"{count++} clicks!"; };
+
+            //copy of the instructors list
+            var instructors = InstructorData.Instructors.ToList();
+            var layoutFileId = 1;
+            var adapter = new ArrayAdapter<Instructor>(this, layoutFileId, instructors);
+            var list = FindViewById<ListView>(Resource.Id.instructors);
+            list.Adapter = adapter;
+
         }
     }
 }
