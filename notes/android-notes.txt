@@ -1,0 +1,59 @@
+Binding Interfaces
+---------------------------
+	Java Bindings Library
+		- less client code
+		- required more preparation/planning
+	
+	Java Native Interface (JNI)
+		- verbose
+		- reflection-style API
+		
+
+Java Project Types
+---------------------------
+	WebView -> uses Razor templating engine which is deployed in the app
+	OpenGL -> As in gaming, weird
+	Single-View App -> Single panel app
+	Bindings-Library -> project for creating an Android class library that binds an Android/Java jar
+		- interesting!
+	
+All user interactions are grouped into Activities
+	- analagous to a use case
+	UI + code
+	
+UI -> all derive from Views
+
+Layouts
+	LinearLayout: single row or column of boxes
+	- requires that you set the layout width and layout height of each element else runtime exception
+	- common and flexible layout ex:
+		<LinearLayout ...>
+			<TextView android:layout_width="match_parent" android:layout_height="wrap_content" ... />
+		</LinearLayout>
+	- Width by pixel density will about be the same size on a 200dpi screen as a 500 dpi screen
+		- Android best practice: use density and dependent pixels to specify sizes
+		Ex: <Button android:layout_width="100dp" ... />
+	- avoid:
+		- fill_parent [Obsolete]
+		- fixed pixel sizes
+		
+		
+	GridLayout: Child Views are in rows and columns
+	RelativeLayout: specify position of the child views relative to neighbors
+		- ex: this child goes to the left of that other one
+		- ex: this child is on the right edge of the screen
+	NestedLayout: can nest sub layouts together
+		- ex: LinearLayout on left, GridLayout to the right of it, some GridLayout at the bottom
+	
+	UI elements are typically laid out in an xml layout file
+	Ex: Pi.axml
+		<LinearLayout ...>
+			<TextView ... />
+			<EditText ... />
+			<Button   ... />
+			<TextView ... />
+		</LinearLayout>
+
+	Resources folder in project
+		contains: Images, layout files, strings
+		

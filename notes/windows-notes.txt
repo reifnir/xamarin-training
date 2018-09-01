@@ -1,0 +1,13 @@
+Binding Interfaces
+---------------------------
+	Java Bindings Library
+		- less client code
+		- required more preparation/planning
+	
+	Java Native Interface (JNI)
+		- verbose
+		- reflection-style API
+		
+
+Java Project Types
+---------------------------

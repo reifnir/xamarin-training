@@ -1,0 +1,11 @@
+testing
+
+concerns to address
+	- low bandwidth
+	- intermittent network access
+	
+testing approach (direction of spiral of test)
+	- inside-out
+		unit -> service -> use case (integration)
+	- outside-in
+		use case (integration) -> service -> unit

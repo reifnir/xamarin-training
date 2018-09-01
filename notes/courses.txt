@@ -1,0 +1,107 @@
+Xamarin
+-----------------------------------
+
+Cross-platform Design
+	Introduction to Cross-Platform Mobile Development [XAM110]
+	Consuming REST-based Web Services [XAM150]
+	SQLite and Mobile Data [XAM160]
+	Preparing for Publishing [XAM220]
+	Patterns for Cross Platform Mobile Development [XAM250]
+	Mobile Application Architecture [XAM301]
+	Diagnosing Memory Management Issues [XAM370]
+
+Xamarin.Forms
+	Introduction to Xamarin.Forms [XAM120]
+	XAML in Xamarin.Forms [XAM130]
+	Layout in Xamarin.Forms [XAM135]
+	Resources and Styles in Xamarin.Forms [XAM140]
+	Navigation Patterns in Xamarin.Forms [XAM205]
+	Data Binding in Xamarin.Forms [XAM270]
+	Using ListView in Xamarin.Forms [XAM280]
+	Master-detail and Drawer Navigation [XAM290]
+	Customizing the ListView in Xamarin.Forms [XAM312]
+	Design an MVVM ViewModel in Xamarin.Forms [XAM320]
+	Xamarin.Forms Effects [XAM330]
+	Xamarin.Forms Renderers [XAM335]
+
+Android
+	Introduction to Xamarin.Android [AND101]
+	Activities and Intents [AND102]
+	ListViews and Adapters in Android [AND110]
+	RecyclerView and CardView in Android [AND115]
+	Toolbar and App Bar [AND180]
+	Android Navigation [AND205]
+	Android Services [AND210]
+	Publishing an Android App [AND220]
+	(probaly not) Google Maps [AND230]
+	(probaly not) Location Services [AND231]
+	Touch in Android [AND240]
+	(probaly not) Gestures in Android [AND241]
+	Building a Java Bindings Library [AND450]
+
+
+Other
+	Introduction to Testing [XTC101]
+	Xamarin.UITest [XTC102]
+
+	Debugging and Exceptions [CSC108]
+	Using Async and Await [CSC350]
+	Writing Multithreaded Mobile Applications [CSC351]
+	Introduction to Thread Safety and Synchronization [CSC352]
+	More about Synchronization [CSC353]
+
+	Securing Local Data [ENT170]
+	Introduction to OAuth 2 [ENT171]
+	Accessing OAuth 2 Web Services with Xamarin.Auth [ENT172]
+
+	
+Order of events
+--------------------------
+100
+*	Introduction to Xamarin.Android [AND101]
+*	Introduction to Testing [XTC101]
+	Activities and Intents [AND102]
+	Xamarin.UITest [XTC102]
+	Debugging and Exceptions [CSC108]
+	ListViews and Adapters in Android [AND110]
+	Introduction to Cross-Platform Mobile Development [XAM110]
+	RecyclerView and CardView in Android [AND115]
+	Introduction to Xamarin.Forms [XAM120]
+	XAML in Xamarin.Forms [XAM130]
+	Layout in Xamarin.Forms [XAM135]
+	Resources and Styles in Xamarin.Forms [XAM140]
+	Consuming REST-based Web Services [XAM150]
+	SQLite and Mobile Data [XAM160]
+	Securing Local Data [ENT170]
+	Introduction to OAuth 2 [ENT171]
+	Accessing OAuth 2 Web Services with Xamarin.Auth [ENT172]
+	Toolbar and App Bar [AND180]
+200
+	Android Navigation [AND205]
+	Navigation Patterns in Xamarin.Forms [XAM205]
+	Android Services [AND210]
+	Preparing for Publishing [XAM220]
+	Publishing an Android App [AND220]
+	Touch in Android [AND240]
+	Patterns for Cross Platform Mobile Development [XAM250]
+	Data Binding in Xamarin.Forms [XAM270]
+	Using ListView in Xamarin.Forms [XAM280]
+	Master-detail and Drawer Navigation [XAM290]
+300
+	Mobile Application Architecture [XAM301]
+	Customizing the ListView in Xamarin.Forms [XAM312]
+	Design an MVVM ViewModel in Xamarin.Forms [XAM320]
+	Xamarin.Forms Effects [XAM330]
+	Xamarin.Forms Renderers [XAM335]
+	Using Async and Await [CSC350]
+	Writing Multithreaded Mobile Applications [CSC351]
+	Introduction to Thread Safety and Synchronization [CSC352]
+	More about Synchronization [CSC353]
+	Diagnosing Memory Management Issues [XAM370]
+400
+	Building a Java Bindings Library [AND450]
+	
+	
+
+
+	
