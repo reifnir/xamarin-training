@@ -57,3 +57,12 @@ Layouts
 	Resources folder in project
 		contains: Images, layout files, strings
 		
+Activities
+----------------------------------
+	When one activity wants to kick off another activity
+		1 - creates an intent with any required info (context)
+		2 - sends intent to Android
+		3 - Android starts that activity for you
+
+	Usually an intent === what you want to do specifically (load details for some thing)
+	may be generic "show map for these coordinates"
