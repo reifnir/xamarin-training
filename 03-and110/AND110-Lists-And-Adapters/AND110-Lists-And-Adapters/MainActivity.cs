@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace AND110ListsAndAdapters
 {
-    [Activity(Label = "AND110-Lists-And-Adapters", MainLauncher = true, Icon = "@mipmap/icon")]
+    [Activity(Label = "Instructors", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : Activity
     {
         protected override void OnCreate(Bundle savedInstanceState)
