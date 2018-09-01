@@ -114,7 +114,8 @@ Source Activity
 Target Activity
 	- calls SetResult (along with extras) when done
 
-Intents
+Intents (triggering new activity)
+-----------------------------------------
 	- explicit intents
 		- mainly for calls within your APK
 	- implicit intents
@@ -178,4 +179,28 @@ Intents
 		Ex:
 			intent.PutExtra(Intent.ExtraEmail, new string[] { "hello@xamarin.com" });
 			intent.PutExtra(Intent.ExtraSubject, "How are you?");
-	
+
+List Views and Adapters
+-----------------------------------
+	Populate a ListView using an ArrayAdapter
+		ListView is the component that shows a series of rows belonging to a collection of items
+		An Adapter is a class that creates and populates the rows in a ListView
+		
+		ArrayAdapter simply returns ToString() on the class in the collection/list of items
+			- good for prototyping
+			Ex:
+				//this == context (i.e. the activity that's using it)
+				//layoutFileId == Id of the layout file to use for each row (Resources.blah.blah)
+				var data = new List<Instructor>();
+				var adapter = new ArrayAdapter<Instructor>(this, layoutFileId, data);
+				var list = FindViewById<ListView>(Resource.Id.myList);
+				list.Adapter = adapter;
+
+	Handling list-item click events
+
+	Implement a custom adapter
+
+	Use layout recycling and the view-holder pattern
+
+	Enable fast scrolling and code a section indexer
+
