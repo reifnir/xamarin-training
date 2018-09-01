@@ -60,10 +60,9 @@ Order of events
 100
 *	Introduction to Xamarin.Android [AND101]
 *	Introduction to Testing [XTC101]
-	Activities and Intents [AND102]
+*	Activities and Intents [AND102]
 	Xamarin.UITest [XTC102]
-	Debugging and Exceptions [CSC108]
-	ListViews and Adapters in Android [AND110]
+...	ListViews and Adapters in Android [AND110]
 	Introduction to Cross-Platform Mobile Development [XAM110]
 	RecyclerView and CardView in Android [AND115]
 	Introduction to Xamarin.Forms [XAM120]
