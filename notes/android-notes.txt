@@ -90,4 +90,26 @@ Passed as Bundles
 			int id = base.Intent.Extras.GetInt("ContactId", -1);
 		- Ex: 
 			int id = base.Intent.GetIntExtra("ContactId", -1);
-			
+
+Request-Response Activities
+------------------------------------------
+Source Activity
+	- overrides OnActivityResult
+		- gets called when activity calls Finish() or when user hits back
+	- initiates with StartActivityForResult(intent, requestCode)
+	- RequestCode - integer passed to activity to identify it
+		- magic number :/
+	- Result Code - enumerable code to connote success or failure
+		- Enum named "Result"
+			- Ok
+			- Cancel
+			- First User (first useable custom value for result codes)
+	
+	Calling SetResult does not cause activity to end
+	public void SetResult(Result resultCode);
+	public void SetResult(Result resultCode, Intent data);
+	- if you called Finish() then resultCode defaults to Cancelled
+
+
+Target Activity
+	- calls SetResult (along with extras) when done
