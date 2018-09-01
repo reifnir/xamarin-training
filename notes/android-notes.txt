@@ -69,5 +69,25 @@ Activities
 
 Passing arguments from one activity to another
 -------------------------------------
-Only serializable data can be passed.
-Begone byref!
+Passed as Bundles
+	- Only serializable data can be passed.
+		- simple types
+		- ISerializable
+		- IParcelable(??)
+	- Begone byref!
+	- Passed as key-value pairs (serialized Json type can be a single value)
+	- Pass arguments to activity
+		- Ex:
+			var bundle = new Bundle();
+			bundle.PutInt("ContactId", 123456789);
+			var intent = new Intent();
+			intent.PutExtras(bundle);
+		- Ex:
+			var intent = new Intent();
+			intent.PutExtra("ContactId", 123456789);
+	- Get args for activity
+		- Ex: 
+			int id = base.Intent.Extras.GetInt("ContactId", -1);
+		- Ex: 
+			int id = base.Intent.GetIntExtra("ContactId", -1);
+			
