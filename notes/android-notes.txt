@@ -113,3 +113,69 @@ Source Activity
 
 Target Activity
 	- calls SetResult (along with extras) when done
+
+Intents
+	- explicit intents
+		- mainly for calls within your APK
+	- implicit intents
+		- for calls outside of your APK (when you don't know the precise activity)
+		- verify as can be prone to errors
+			var intent = new Intent();
+			...
+			if (intent.ResolveActivity(PackageManager) != null)
+			{
+				StartActivity(intent);
+			}
+		- can contain
+			- Action
+			- Data
+			- MIME Type
+			- Categories
+			- Extras
+		- Android documentation will tell what is needed for a given intent
+		- Ex: show a location on a map
+			Action: ACTION_VIEW
+			Data URI Scheme: geo:latitude,longitude
+				Android.Net.Uri.Parse("geo:47.6,-122.3")
+
+	Intent Actions
+		View: can browse on web, open a location, or open a music file		
+		Send To: email, text
+		Pick: select image, select contact
+		Ex:
+			Intent.ActionView => android.intent.action.VIEW (show some info to the user)
+			Intent.ActionDial => android.intent.action.DIAL (dial the phone)
+			Intent.ActionEdit => android.intent.action.EDIT (let the user edit some data)
+			Intent.ActionSendTo => android.intent.action.SENDTO (send a message)
+			...
+		Can be set in two different ways:
+			- new Intent(actionName)
+			- intent.SetAction(actionName)
+		
+	Intent Data
+		- data for a phone dialer activity
+			Ex: intent.SetData("tel:(855) 926-2746");
+		- data for a browser activity
+			Ex: intent.SetData(Android.Net.Uri.Parse("https://example.com"));
+	MIME Type
+		**SetData and SetType are mutually exclusive!
+		add a calendar event
+			- intent.SetType("vnd.android.cursor.dir/event");
+		select an image => "image/*"
+			- intent.SetType("image/*");
+			- intent.SetType("image/jpeg");
+	Categories
+		**Can be called multiple times if you need to add multiple categories
+		- Preference (aka a settings panel)
+			Ex: intent.AddCategory(Intent.CategoryPreference);
+		- Tab (intended to live inside a tab)
+		- Openable (a picker)
+	Extras
+		Intent.ExtraEmail="android.intent.extra.EMAIL" (List of addresses for an email)
+		MediaStore.ExtraOutput="output" (location for camera to save)
+		AlarmClock.ExtraRingtone="android.intent.extra.alarm.RINGTONE" (Tone to play for an alarm)
+		EventsColumns.Title="title" (Calendar event title)
+		Ex:
+			intent.PutExtra(Intent.ExtraEmail, new string[] { "hello@xamarin.com" });
+			intent.PutExtra(Intent.ExtraSubject, "How are you?");
+	
