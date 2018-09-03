@@ -204,3 +204,11 @@ List Views and Adapters
 
 	Enable fast scrolling and code a section indexer
 
+	BaseAdapter<T>
+		abstract T this[position]
+		abstract int Count
+		abstract long GetItemId -> some kind of unique id
+		GetView method: produce rows in a list
+			1 - inflating a layout file
+			2 - looks up views in the heirarchy
+			3 - populating view with data
