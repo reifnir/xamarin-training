@@ -64,5 +64,19 @@
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\images\adrian-stevens.jpg" />
+    <AndroidAsset Include="Assets\images\chris-van-wyk.jpg" />
+    <AndroidAsset Include="Assets\images\glenn-stephens.jpg" />
+    <AndroidAsset Include="Assets\images\jason-deboever.png" />
+    <AndroidAsset Include="Assets\images\jesse-dietrichson.jpg" />
+    <AndroidAsset Include="Assets\images\judy-mcneil.png" />
+    <AndroidAsset Include="Assets\images\kym-phillpotts.jpg" />
+    <AndroidAsset Include="Assets\images\mark-smith.jpg" />
+    <AndroidAsset Include="Assets\images\michael-stonis.jpg" />
+    <AndroidAsset Include="Assets\images\rene-ruppert.jpg" />
+    <AndroidAsset Include="Assets\images\rob-gibbens.jpg" />
+    <AndroidAsset Include="Assets\images\roger-peters.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
