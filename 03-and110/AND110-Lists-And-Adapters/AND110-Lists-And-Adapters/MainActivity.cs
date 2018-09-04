@@ -19,7 +19,8 @@ namespace AND110ListsAndAdapters
 
             var list = FindViewById<ListView>(Resource.Id.instructorViewList);
 
-            var adapter = new ArrayAdapter<Instructor>(this, Android.Resource.Layout.SimpleListItem1, InstructorData.Instructors);
+            //var adapter = new ArrayAdapter<Instructor>(this, Android.Resource.Layout.SimpleListItem1, InstructorData.Instructors);
+            var adapter = new InstructorAdapter(InstructorData.Instructors);
             list.Adapter = adapter;
 
             list.ItemClick += List_ItemClick;
