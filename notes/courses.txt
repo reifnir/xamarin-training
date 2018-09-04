@@ -64,7 +64,7 @@ Order of events
 	Xamarin.UITest [XTC102]
 ...	ListViews and Adapters in Android [AND110]
 	resume: https://university.xamarin.com/videos/and110-list-views-and-adapters-in-android
-	resume: 26:00
+	resume: 51:46
 	Introduction to Cross-Platform Mobile Development [XAM110]
 	RecyclerView and CardView in Android [AND115]
 	Introduction to Xamarin.Forms [XAM120]

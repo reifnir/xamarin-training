@@ -30,18 +30,25 @@ namespace AND110ListsAndAdapters
         {
             var instructor = instructors[position];
             var inflater = LayoutInflater.From(parent.Context);
-            var view = inflater.Inflate(Resource.Layout.InstructorRow, parent, false);
+            var view = convertView ?? inflater.Inflate(Resource.Layout.InstructorRow, parent, false);
 
-            var image = view.FindViewById<ImageView>(Resource.Id.photoImageView);
+            if (view.Tag as ViewHolder == null)
+            {
+                Console.WriteLine("New view!");
+                var image = view.FindViewById<ImageView>(Resource.Id.photoImageView);
+                var name = view.FindViewById<TextView>(Resource.Id.nameTextView);
+                var specialty = view.FindViewById<TextView>(Resource.Id.specialtyTextView);
+                view.Tag = new ViewHolder(name, specialty, image);
+            }
+            var viewHolder = (ViewHolder)view.Tag;
+
+            var drawable = ImageAssetManager.Get(parent.Context, instructor.ImageUrl);
             //image.SetImageURI(Android.Net.Uri(instructor.ImageUrl));
-            var drawable = Drawable.CreateFromStream(parent.Context.Assets.Open(instructor.ImageUrl), null);
-            image.SetImageDrawable(drawable);
+            viewHolder.Picture.SetImageDrawable(drawable);
 
-            var name = view.FindViewById<TextView>(Resource.Id.nameTextView);
-            name.Text = instructor.Name;
+            viewHolder.Name.Text = instructor.Name;
 
-            var specialty = view.FindViewById<TextView>(Resource.Id.specialtyTextView);
-            specialty.Text = instructor.Specialty;
+            viewHolder.Specialty.Text = instructor.Specialty;
 
             return view;
         }
