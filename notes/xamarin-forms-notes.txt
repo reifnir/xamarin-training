@@ -1,0 +1,14 @@
+Xamarin Forms
+---------------------------------
+Common UI shared across IOS, Android (etc doesn't matter)
+
+Shared code -> .NET Standard
+
+Xamarin libraries for cross-platform APIs
+------------------------------------------------
+Xamarin.Social      -> https://github.com/xamarin/Xamarin.Social
+Xamarin.Auth        -> https://github.com/xamarin/Xamarin.Auth
+Xamarin.Mobile      -> https://github.com/xamarin/Xamarin.Mobile
+Open source plugins -> https://github.com/xamarin/XamarinComponents
+.NET Foundation
+NuGet
