@@ -13,10 +13,10 @@ namespace AND110ListsAndAdapters
             var temp = new List<Instructor>();
 
             AddInstructors(temp);
-            //AddInstructors(temp);
-            //AddInstructors(temp);
-            //AddInstructors(temp);
-            //AddInstructors(temp);
+            AddInstructors(temp);
+            AddInstructors(temp);
+            AddInstructors(temp);
+            AddInstructors(temp);
 
             Instructors = temp.OrderBy(i => i.Name).ToList();
         }

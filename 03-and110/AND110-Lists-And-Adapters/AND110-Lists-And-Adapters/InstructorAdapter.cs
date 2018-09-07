@@ -1,20 +1,24 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using Android.Graphics.Drawables;
 using Android.Views;
 using Android.Widget;
+using Java.Lang;
 
 namespace AND110ListsAndAdapters
 {
-    public class InstructorAdapter : BaseAdapter<Instructor>
+    public class InstructorAdapter : BaseAdapter<Instructor>, ISectionIndexer
     {
         private readonly List<Instructor> instructors;
+        private readonly InstructorSectionBuilder sections;
         public InstructorAdapter()
         {
         }
         public InstructorAdapter(List<Instructor> instructors)
         {
             this.instructors = instructors;
+            this.sections = new InstructorSectionBuilder(instructors);
         }
 
         public override Instructor this[int position] => instructors[position];
@@ -51,6 +55,24 @@ namespace AND110ListsAndAdapters
             viewHolder.Specialty.Text = instructor.Specialty;
 
             return view;
+        }
+
+        public int GetPositionForSection(int sectionIndex)
+        {
+            Console.WriteLine("GetPositionForSection");
+            return sections.GetPositionForSection(sectionIndex);
+        }
+
+        public int GetSectionForPosition(int position)
+        {
+            Console.WriteLine("GetSectionForPosition");
+            return sections.GetSectionForPosition(position);
+        }
+
+        public Java.Lang.Object[] GetSections()
+        {
+            Console.WriteLine("GetSections");
+            return sections.Sections;
         }
     }
 }

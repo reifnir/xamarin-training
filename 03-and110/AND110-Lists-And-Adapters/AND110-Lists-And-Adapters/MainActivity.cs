@@ -18,15 +18,10 @@ namespace AND110ListsAndAdapters
             SetContentView(Resource.Layout.Main);
 
             var list = FindViewById<ListView>(Resource.Id.instructorViewList);
-
+            list.FastScrollEnabled = true;
             //var adapter = new ArrayAdapter<Instructor>(this, Android.Resource.Layout.SimpleListItem1, InstructorData.Instructors);
-            var instructors = new List<Instructor>();
-            instructors.AddRange(InstructorData.Instructors);
-            instructors.AddRange(InstructorData.Instructors);
-            instructors.AddRange(InstructorData.Instructors);
-            instructors.AddRange(InstructorData.Instructors);
-            instructors.AddRange(InstructorData.Instructors);
-            var adapter = new InstructorAdapter(instructors);
+
+            var adapter = new InstructorAdapter(InstructorData.Instructors);
             list.Adapter = adapter;
 
             list.ItemClick += List_ItemClick;

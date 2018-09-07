@@ -219,3 +219,14 @@ Memory saving techniques
 	Cache view references to increase performance
 		- use a class named ViewHolder to prevent repeated lookups finding view by id
 	Cache some external assets to prevent repeated CPU/IO intensive tasks (like loading Drawable images, etc)
+
+Section Label/Indexing for faster scrolling
+---------------------------------------------
+GetSections returns Java.Object[]
+Data	List position	Section index	Section label
+Alex	0				0				A
+Allen	1				0				A
+Ann		2				0				A
+Carl	3				1				C
+Carol	4				1				C
+...

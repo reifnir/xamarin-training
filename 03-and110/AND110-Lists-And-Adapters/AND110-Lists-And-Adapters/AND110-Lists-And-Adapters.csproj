@@ -53,6 +53,7 @@
     <Compile Include="InstructorAdapter.cs" />
     <Compile Include="ViewHolder.cs" />
     <Compile Include="ImageAssetManager.cs" />
+    <Compile Include="InstructorSectionBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
