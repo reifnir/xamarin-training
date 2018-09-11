@@ -251,3 +251,13 @@ ICONS!!
 	<group android:checkableBehavior="single" => radio buttons
 	<group android:checkableBehavior="all" => checkboxes
 	<group android:checkableBehavior="none" (default) => no checkable behavior
+
+Toolbar vs Actionbar instantiation
+	Standalone Toolbar
+		Inflate via toolbar's inflate method
+		Set nav icon by XML attribute
+		Item click => Toolbar event
+	Toolbar as app bar
+		Inflate by overriding Activity method
+		Set nav icon by ActionBar methods
+		Item click => Override Activity method
