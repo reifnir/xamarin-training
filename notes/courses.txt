@@ -63,14 +63,7 @@ Order of events
 *	Activities and Intents [AND102]
 	Xamarin.UITest [XTC102]
 *	ListViews and Adapters in Android [AND110]	
-...	Introduction to Cross-Platform Mobile Development [XAM110]
 	RecyclerView and CardView in Android [AND115]
-	Introduction to Xamarin.Forms [XAM120]
-	XAML in Xamarin.Forms [XAM130]
-	Layout in Xamarin.Forms [XAM135]
-	Resources and Styles in Xamarin.Forms [XAM140]
-	Consuming REST-based Web Services [XAM150]
-	SQLite and Mobile Data [XAM160]
 	Securing Local Data [ENT170]
 	Introduction to OAuth 2 [ENT171]
 	Accessing OAuth 2 Web Services with Xamarin.Auth [ENT172]
@@ -99,8 +92,15 @@ Order of events
 	Diagnosing Memory Management Issues [XAM370]
 400
 	Building a Java Bindings Library [AND450]
-	
-	
+Maybe later...
+	Introduction to Cross-Platform Mobile Development [XAM110]
+	Introduction to Xamarin.Forms [XAM120]
+	XAML in Xamarin.Forms [XAM130]
+	Layout in Xamarin.Forms [XAM135]
+	Resources and Styles in Xamarin.Forms [XAM140]
+	Consuming REST-based Web Services [XAM150]
+	SQLite and Mobile Data [XAM160]
+
 
 
 	

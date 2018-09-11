@@ -214,19 +214,40 @@ List Views and Adapters
 			3 - populating view with data
 
 Memory saving techniques
----------------------------------
 	Reusing layouts -> view recycling
 	Cache view references to increase performance
 		- use a class named ViewHolder to prevent repeated lookups finding view by id
 	Cache some external assets to prevent repeated CPU/IO intensive tasks (like loading Drawable images, etc)
 
 Section Label/Indexing for faster scrolling
----------------------------------------------
-GetSections returns Java.Object[]
-Data	List position	Section index	Section label
-Alex	0				0				A
-Allen	1				0				A
-Ann		2				0				A
-Carl	3				1				C
-Carol	4				1				C
-...
+	---------------------------------------------
+	GetSections returns Java.Object[]
+	Data	List position	Section index	Section label
+	Alex	0				0				A
+	Allen	1				0				A
+	Ann		2				0				A
+	Carl	3				1				C
+	Carol	4				1				C
+	...
+
+Toolbar and App Bar
+-----------------------------------------------------------------
+Two Toolbar libraries
+	Modern
+		- android.widget.Toolbar -> Android 21+
+	Support
+		- android.support.v7.widget.Toolbar -> legacy
+		requires compatibility theme for <application android:theme="@style/Theme.AppCompat">
+		must add xmlns entry for the legacy library. 
+			Ex: <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto" ...>
+					<android.support.v7.widget.Toolbar app:title="Session" ... />
+				...
+		xmlns prefix of "app" is a highly common convention
+ICONS!!
+	https://design.google.com/icons/
+
+<group>
+	Element that gives checkable behavior
+	<group android:checkableBehavior="single" => radio buttons
+	<group android:checkableBehavior="all" => checkboxes
+	<group android:checkableBehavior="none" (default) => no checkable behavior

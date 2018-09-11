@@ -11,6 +11,7 @@ namespace Recipes
 	{
 		Recipe recipe;
 		ArrayAdapter adapter;
+        Toolbar toolbar;
 
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
@@ -23,29 +24,33 @@ namespace Recipes
 			int index = Intent.GetIntExtra("RecipeIndex", -1);
 			recipe = RecipeData.Recipes[index];
 
-			//
-			// Show the recipe name
-			//
-			var name = FindViewById<TextView>(Resource.Id.nameTextView);
-			name.Text = recipe.Name;
+            //
+            // Show the recipe name
+            //
+            //var name = FindViewById<TextView>(Resource.Id.nameTextView);
+            //name.Text = recipe.Name;
+            toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
+            toolbar.Title = recipe.Name;
+            toolbar.InflateMenu(Resource.Menu.recipeMenu);
+            toolbar.MenuItemClick += OnMenuItemClick;
 
-			//
-			// Show the list of ingredients
-			//
-			var list = FindViewById<ListView>(Resource.Id.ingredientsListView);
+            //
+            // Show the list of ingredients
+            //
+            var list = FindViewById<ListView>(Resource.Id.ingredientsListView);
 			list.Adapter = adapter = new ArrayAdapter<Ingredient>(this, Android.Resource.Layout.SimpleListItem1, recipe.Ingredients);
 
-			//
-			// Set up the "Favorite" toggle, we use different images for the 'on' and 'off' states
-			//
-			var toggle = FindViewById<ToggleButton>(Resource.Id.favoriteButton);
-			toggle.CheckedChange += OnFavoriteCheckedChange;
-			SetFavoriteDrawable(recipe.IsFavorite);
+            //
+            // Set up the "Favorite" toggle, we use different images for the 'on' and 'off' states
+            //
+            //var toggle = FindViewById<ToggleButton>(Resource.Id.favoriteButton);
+            //toggle.CheckedChange += OnFavoriteCheckedChange;
+            SetFavoriteDrawable(recipe.IsFavorite);
 
-			//
-			// Set up the "Number of servings" buttons
-			//
-			FindViewById<Button>(Resource.Id.oneServingButton).Click   += (sender, e) => SetServings(1);
+            //
+            // Set up the "Number of servings" buttons
+            //
+            FindViewById<Button>(Resource.Id.oneServingButton).Click   += (sender, e) => SetServings(1);
 			FindViewById<Button>(Resource.Id.twoServingsButton).Click  += (sender, e) => SetServings(2);
 			FindViewById<Button>(Resource.Id.fourServingsButton).Click += (sender, e) => SetServings(4);
 
@@ -54,16 +59,30 @@ namespace Recipes
 			//
 			FindViewById<ImageButton>(Resource.Id.backButton).Click += (sender, e) => Finish();
 
-			//
-			// Navigation button: navigate forward to the About page
-			//
-			FindViewById<Button>(Resource.Id.aboutButton).Click += (sender, e) => StartActivity(typeof(AboutActivity));
-		}
+            //
+            // Navigation button: navigate forward to the About page
+            //
+            //FindViewById<Button>(Resource.Id.aboutButton).Click += (sender, e) => StartActivity(typeof(AboutActivity));
+        }
 
-		//
-		// Handler for the 'favorite' toggle button
-		//
-		void OnFavoriteCheckedChange(object sender, CompoundButton.CheckedChangeEventArgs e)
+        private void OnMenuItemClick(object sender, Toolbar.MenuItemClickEventArgs e)
+        {
+            switch(e.Item.ItemId)
+            {
+                case Resource.Id.addToFavorites:
+                    recipe.IsFavorite = !recipe.IsFavorite;
+                    SetFavoriteDrawable(recipe.IsFavorite);
+                    break;
+                case Resource.Id.about:
+                    StartActivity(typeof(AboutActivity));
+                    break;
+            }
+        }
+
+        //
+        // Handler for the 'favorite' toggle button
+        //
+        void OnFavoriteCheckedChange(object sender, CompoundButton.CheckedChangeEventArgs e)
 		{
 			recipe.IsFavorite = e.IsChecked; // update the recipe's state
 
@@ -79,7 +98,8 @@ namespace Recipes
 			else
 				drawable = base.GetDrawable(Resource.Drawable.ic_favorite_border_white_24dp); // 'heart' image border only
 
-			FindViewById<ToggleButton>(Resource.Id.favoriteButton).SetCompoundDrawablesWithIntrinsicBounds(null, drawable, null, null);
+            toolbar.Menu.FindItem(Resource.Id.addToFavorites).SetIcon(drawable);
+			//FindViewById<ToggleButton>(Resource.Id.favoriteButton).SetCompoundDrawablesWithIntrinsicBounds(null, drawable, null, null);
 		}
 		// Note: base.GetDrawable requires API level 21
 		// To run on earlier versions, change the minimum API level in the project settings and use the following code:
