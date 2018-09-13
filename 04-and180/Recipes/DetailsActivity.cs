@@ -2,13 +2,14 @@ using Android.App;
 using Android.Content;
 using Android.Graphics.Drawables;
 using Android.OS;
+using Android.Views;
 using Android.Widget;
 
 namespace Recipes
 {
 	[Activity(Label = "DetailsActivity")]
-	public class DetailsActivity : Activity
-	{
+	public class DetailsActivity : Activity //Android.Support.V7.App.AppCompatActivity
+    {
 		Recipe recipe;
 		ArrayAdapter adapter;
         Toolbar toolbar;
@@ -24,15 +25,14 @@ namespace Recipes
 			int index = Intent.GetIntExtra("RecipeIndex", -1);
 			recipe = RecipeData.Recipes[index];
 
-            //
-            // Show the recipe name
-            //
-            //var name = FindViewById<TextView>(Resource.Id.nameTextView);
-            //name.Text = recipe.Name;
             toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
             toolbar.Title = recipe.Name;
-            toolbar.InflateMenu(Resource.Menu.recipeMenu);
-            toolbar.MenuItemClick += OnMenuItemClick;
+
+            base.SetActionBar(toolbar);
+
+            //Show menu button in top left toolbar location
+            ActionBar.SetDisplayHomeAsUpEnabled(true);
+            ActionBar.SetHomeAsUpIndicator(Resource.Drawable.ic_arrow_back_white_24dp);
 
             //
             // Show the list of ingredients
@@ -40,58 +40,6 @@ namespace Recipes
             var list = FindViewById<ListView>(Resource.Id.ingredientsListView);
 			list.Adapter = adapter = new ArrayAdapter<Ingredient>(this, Android.Resource.Layout.SimpleListItem1, recipe.Ingredients);
 
-            //
-            // Set up the "Favorite" toggle, we use different images for the 'on' and 'off' states
-            //
-            //var toggle = FindViewById<ToggleButton>(Resource.Id.favoriteButton);
-            //toggle.CheckedChange += OnFavoriteCheckedChange;
-            SetFavoriteDrawable(recipe.IsFavorite);
-
-            //
-            // Set up the "Number of servings" buttons
-            //
-            //FindViewById<Button>(Resource.Id.oneServingButton).Click   += (sender, e) => SetServings(1);
-			//FindViewById<Button>(Resource.Id.twoServingsButton).Click  += (sender, e) => SetServings(2);
-			//FindViewById<Button>(Resource.Id.fourServingsButton).Click += (sender, e) => SetServings(4);
-
-			//
-			// Navigation button: navigate back to the previous page
-			//
-			FindViewById<ImageButton>(Resource.Id.backButton).Click += (sender, e) => Finish();
-
-            //
-            // Navigation button: navigate forward to the About page
-            //
-            //FindViewById<Button>(Resource.Id.aboutButton).Click += (sender, e) => StartActivity(typeof(AboutActivity));
-        }
-
-        private void OnMenuItemClick(object sender, Toolbar.MenuItemClickEventArgs e)
-        {
-            switch(e.Item.ItemId)
-            {
-                case Resource.Id.addToFavorites:
-                    recipe.IsFavorite = !recipe.IsFavorite;
-                    SetFavoriteDrawable(recipe.IsFavorite);
-                    break;
-                case Resource.Id.about:
-                    StartActivity(typeof(AboutActivity));
-                    break;
-                //case Resource.Id.servings:                    
-                //    e.Item.SubMenu.FindItem(Resource.Id.oneServing).SetChecked(recipe.NumServings == 1);
-                //    break;
-                case Resource.Id.oneServing:
-                    SetServings(1);
-                    e.Item.SetChecked(true);
-                    break;
-                case Resource.Id.twoServings:
-                    SetServings(2);
-                    e.Item.SetChecked(true);
-                    break;
-                case Resource.Id.fourServings:
-                    SetServings(4);
-                    e.Item.SetChecked(true);
-                    break;
-            }
         }
 
         //
@@ -106,14 +54,16 @@ namespace Recipes
 
 		void SetFavoriteDrawable(bool isFavorite)
 		{
-			Drawable drawable = null;
+            var favoriteIcon = (isFavorite)
+                ? Resource.Drawable.ic_favorite_white_24dp
+                : Resource.Drawable.ic_favorite_border_white_24dp;
 
-			if (isFavorite)
-				drawable = base.GetDrawable(Resource.Drawable.ic_favorite_white_24dp); // filled in 'heart' image
-			else
-				drawable = base.GetDrawable(Resource.Drawable.ic_favorite_border_white_24dp); // 'heart' image border only
-
-            toolbar.Menu.FindItem(Resource.Id.addToFavorites).SetIcon(drawable);
+            //if (isFavorite)
+            //	drawable = base.GetDrawable(Resource.Drawable.ic_favorite_white_24dp); // filled in 'heart' image
+            //else
+            //	drawable = base.GetDrawable(Resource.Drawable.ic_favorite_border_white_24dp); // 'heart' image border only
+            var addToFavorites = toolbar.Menu.FindItem(Resource.Id.addToFavorites);
+            addToFavorites.SetIcon(favoriteIcon);
 			//FindViewById<ToggleButton>(Resource.Id.favoriteButton).SetCompoundDrawablesWithIntrinsicBounds(null, drawable, null, null);
 		}
 		// Note: base.GetDrawable requires API level 21
@@ -136,5 +86,46 @@ namespace Recipes
 
 			adapter.NotifyDataSetChanged();
 		}
-	}
+
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            base.MenuInflater.Inflate(Resource.Menu.recipeMenu, menu);
+            SetFavoriteDrawable(recipe.IsFavorite);
+            return true;
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            switch (item.ItemId)
+            {
+                case Android.Resource.Id.Home:
+                    Finish();
+                    break;
+                case Resource.Id.addToFavorites:
+                    recipe.IsFavorite = !recipe.IsFavorite;
+                    SetFavoriteDrawable(recipe.IsFavorite);
+                    break;
+                case Resource.Id.about:
+                    StartActivity(typeof(AboutActivity));
+                    break;
+                //case Resource.Id.servings:                    
+                //    e.Item.SubMenu.FindItem(Resource.Id.oneServing).SetChecked(recipe.NumServings == 1);
+                //    break;
+                case Resource.Id.oneServing:
+                    SetServings(1);
+                    item.SetChecked(true);
+                    break;
+                case Resource.Id.twoServings:
+                    SetServings(2);
+                    item.SetChecked(true);
+                    break;
+                case Resource.Id.fourServings:
+                    SetServings(4);
+                    item.SetChecked(true);
+                    break;
+            }
+            return true;
+        }
+
+    }
 }

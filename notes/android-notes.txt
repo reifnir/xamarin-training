@@ -261,3 +261,27 @@ Toolbar vs Actionbar instantiation
 		Inflate by overriding Activity method
 		Set nav icon by ActionBar methods
 		Item click => Override Activity method
+
+Steps to implement an app bar (with compatability)
+	1 - Inherit from AppCompatActivity
+	2 - Use AppCompat.NoActionBar theme
+	3 - Create and position a Toolbar
+	4 - Set the Toolbar as your app bar
+	5 - Populate your Toolbar
+	6 - Respond to item click
+
+Steps to add navigation
+	1 - Enable navigation
+	2 - Set the icon
+	3 - Respond to item click
+
+When adding "Home"/"Navigation button" menu item, listen in for...
+	public class MainActivity : Activity
+	{ ...
+		public override bool OnOptionsItemSelected(Android.Views.IMenuItem item)
+		{
+			if (item.ItemId == Android.Resource.Id.Home)
+			{ ...
+			}
+		}
+	}
