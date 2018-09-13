@@ -67,7 +67,7 @@ Order of events
 	Securing Local Data [ENT170]
 	Introduction to OAuth 2 [ENT171]
 	Accessing OAuth 2 Web Services with Xamarin.Auth [ENT172]
-	Toolbar and App Bar [AND180]
+*	Toolbar and App Bar [AND180]
 200
 	Android Navigation [AND205]
 	Navigation Patterns in Xamarin.Forms [XAM205]
