@@ -285,3 +285,26 @@ When adding "Home"/"Navigation button" menu item, listen in for...
 			}
 		}
 	}
+
+Recycler View and Card Views
+-----------------------------------------------------------------
+RecyclerView
+	Displays a collection
+	Optimized for large datasets efficiently
+	Reuses views
+	Requires view-holders
+	More complex, requires a lot more code to get it working
+
+	vs ListView/GridView
+		- can add/remove animations
+		- no item click event
+		- no fast scroll/indexer
+		- no predefined adapters
+
+	<android.support.v7.widget.RecyclerView>
+
+	Reference:
+		- Android Support Library V7 RecyclerView
+		or Xamarin Support Library v7 RecyclerView (NuGet)
+
+

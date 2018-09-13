@@ -63,7 +63,7 @@ Order of events
 *	Activities and Intents [AND102]
 	Xamarin.UITest [XTC102]
 *	ListViews and Adapters in Android [AND110]	
-	RecyclerView and CardView in Android [AND115]
+...	RecyclerView and CardView in Android [AND115]
 	Securing Local Data [ENT170]
 	Introduction to OAuth 2 [ENT171]
 	Accessing OAuth 2 Web Services with Xamarin.Auth [ENT172]
