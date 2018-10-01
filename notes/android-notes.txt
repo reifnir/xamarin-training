@@ -307,4 +307,34 @@ RecyclerView
 		- Android Support Library V7 RecyclerView
 		or Xamarin Support Library v7 RecyclerView (NuGet)
 
+	RecyclerView Requires:
+		- RecyclerView: handles scrolling and manages a pool of views
+		- LayoutManager: positions items
+		- layout axml file
+		- ViewHolder: stores view references, can detect item click events
+		- Adapter: inflate layout, bind data to views, reports item-click
+
+	layout manager: a class that calculates the size and position of each item
+		Android supplied layout managers:
+			- LinearLayoutManager
+			- GridLayoutManager
+				- all items share same width
+				- each row expands height to the largest cell in row
+				- Can have items span multiple columns by writing a class such as follows:
+					public class MySpanLookup : GridLayoutManager.SpanSizeLookup
+					{
+						public override int GetSpanSize(int position) { ... }
+					}
+			- StaggeredGridLayoutManager
+				- same as GridLayoutManager except height is not matched for rows in a grid
+				- can set an item to span full width as follows:
+					public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
+					{ ...
+						var lp = holder.ItemView.LayoutParameters.JavaCast<StaggeredGridLayoutManager.LayoutParams>();
+						lp.FullSpan = [some boolean expression];
+					}
+		Each supports verical and horizontal layouts
+		Can define your own layout manager by deriving from RecyclerView.LayoutManager
+
+	
 
